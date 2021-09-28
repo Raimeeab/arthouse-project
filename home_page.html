@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtHouse</title>
+</head>
+<body>
+    <header>
+        <!-- need to put in a flex-box, all <A href> will be linked to different HTML pages-->
+        <h1>ArtHouse</h1>
+        <div class="main-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Eras</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="search-container">
+        <h2>Search the Collection</h2>
+        <div>
+            <p>Artist Name:</p>
+            <input type="text">
+            <button>Search</button> 
+            
+        </div>
+    </section>
+    <section class="fav-container">
+        <h2>Your favourite artworks</h2>
+        <div>
+            <!-- Artwork cards dynamically created in JS -->
+            <!-- relying on local storage -->
+            <!-- fav container hidden until artwork is starred -->
+        </div>
+    </section>
+</body>
+</html>
