@@ -1,0 +1,150 @@
+
+:root {
+    --background-colour: #F4F3EE;
+    --text-colour: #433C38;
+    --highlight-colour: #DCA493;
+    --highlight-colour2: #968D88;
+}
+
+/* need to figure out selection colours */
+
+/* ----- Element Selectors, adjusting page stylings after reset.css is applied ----- */
+html {
+    font-size: 63%;
+}
+
+body {
+    font-family: 'Lato','SF Pro Text','SF Pro Icons','Helvetica Neue','Helvetica','Arial', sans-serif;
+    font-size: 1.75rem;
+    line-height: 1.5;
+    color: var(--text-colour);
+    background-color: var(--background-colour);
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.65rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-family: 'Bebas Neue','SF Pro Text','SF Pro Icons','Helvetica Neue','Helvetica','Arial', sans-serif;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+
+a {
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--highlight-colour2);
+}
+
+a:hover {
+    color: var(--highlight-colour);
+}
+
+/* Element selectors */
+ol{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    position: relative;
+    height: 30px;
+}
+
+li h5 {
+    transform: translate(-10px);
+    padding: 0 20px;
+    transition: 1.5s;
+}
+
+/* Class selectors */
+.top-bar {
+    background: var(--background-colour);
+}
+
+.menu {
+    background: var(--highlight-colour2);
+}
+
+.timeline {
+    padding: 50px;
+    overflow-x: scroll;
+}
+
+.timeline-point {
+    border: none;
+    position: absolute;
+    border-radius: 50%;
+    background: var(--highlight-colour2);
+    width: 15px;
+    height: 15px;
+    top: -40px;
+    left: 40%;
+    transition: 1.5s ease;
+    cursor: pointer;
+}
+
+.timeline-line {
+    background: var(--highlight-colour2);
+    height: 4px;
+    border-radius: 12px;
+    position: relative;
+
+}
+
+.timeline-innerline {
+    position: absolute;
+    background: var(--highlight-colour);
+    width: 0;
+    height: 4px;
+    top: 0;
+    left: 0;
+    transition: 1s linear;
+    border-radius: 999px;
+}
+
+.date {
+    transition: 1.5s;
+    font-size: 1rem;
+    position: absolute;
+    top: -60px;
+    left: 38%;
+    height: 90px;
+    width: 150px;
+}
+
