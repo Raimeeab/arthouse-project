@@ -43,8 +43,9 @@ function renderArtworkResult(searchResultArray) {
     for (i = 0; i < searchResultArray.length; i++) {
         imageIdString += searchResultArray[i] + ",";
     }
-    imageIdString = imageIdString.substring(0, imageIdString.length - 1);// remove the last comma    
-    searchQueryURL = "https://api.artic.edu/api/v1/artworks?ids=" + imageIdString + "&fields=id,title,image_id,thumbnail,date_display,artist_title";  //example: https://api.artic.edu/api/v1/artworks?ids=27992,28560&fields=id,title,image_id
+    imageIdString = imageIdString.substring(0, imageIdString.length - 1);// remove the last comma
+    //calling image example: https://api.artic.edu/api/v1/artworks?ids=27992,28560&fields=id,title,image_id
+    searchQueryURL = "https://api.artic.edu/api/v1/artworks?ids=" + imageIdString + "&fields=id,title,image_id,thumbnail,date_display,artist_title";
 
     fetch(searchQueryURL)
         .then(function (response) {
@@ -97,6 +98,8 @@ function getArtistWikiBio(artistName) {
     console.log("Artist Name: "+artistName);
     var searchQueryURL = "https://neon-cors-proxy.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles=" + artistName + "&prop=extracts&exintro&explaintext&exchars=300&formatversion=2&format=json";
 
+    //async
+    //await
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
