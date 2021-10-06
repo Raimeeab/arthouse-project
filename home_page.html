@@ -4,36 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+
     <title>ArtHouse</title>
+    
+    <link rel="stylesheet" href="css/homepagestyle.css"> 
+   
+
+    <!-- Compressed JavaScript -->
+    
 </head>
-<body>
+<body class="background-image">
+    
     <header>
+        <nav class="main-nav" style="float:right;">
+           
+            <a href="#">HOME</a>
+            <a href="#">ERAS</a>
+            <a href="#">FAVOURITES</a>
+        </nav> 
+        <div id="hidden-div" class="hidden-div">
+
+        </div>
+        <br><br>
+        
         <!-- need to put in a flex-box, all <A href> will be linked to different HTML pages-->
-        <h1>ArtHouse</h1>
-        <div class="main-nav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Eras</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </div>
+        <h1 class="title">ArtHouse</h1>
+        
     </header>
-    <section class="search-container">
-        <h2>Search the Collection</h2>
-        <div>
-            <p>Artist Name:</p>
-            <input type="text">
-            <button>Search</button> 
-            
+        <h2 style="text-align:center;">Search an artist</h2>
+        <h3 style="text-align:center;">Search the entire Art Institute of Chicago<br> collection by an artist’s name below.</h3>
+        <div class="element-center" id="search-div">
+            <input class="search-field" type="text" placeholder="Artist Name" id="artist-name">
+            <button id="search-button" class="search-button">Search</button> 
         </div>
-    </section>
-    <section class="fav-container">
-        <h2>Your favourite artworks</h2>
-        <div>
-            <!-- Artwork cards dynamically created in JS -->
-            <!-- relying on local storage -->
-            <!-- fav container hidden until artwork is starred -->
+
+        <!-- hidden div -->
+        <div id="display-result">
+            <h1 id="result-artist-title">Artsit Name</h1>
+            <h2 id="result-artist-bio">Artist Bio</h2>
+            <div id="result-artwork-list">
+            </div>
         </div>
-    </section>
+
+    <script src="homepage.js"></script>
+
 </body>
 </html>
