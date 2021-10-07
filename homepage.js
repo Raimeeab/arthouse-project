@@ -5,9 +5,6 @@ var searchDivEl = document.getElementById("search-div");
 var hiddenDivEl = document.getElementById("hidden-div");
 var enterArtistNameEL = document.getElementById("artist-name")
 
-
-
-
 var formSubmitHandler = function(event) {
     event.preventDefault();
     var artistName = enterArtistNameEL.value.trim();
