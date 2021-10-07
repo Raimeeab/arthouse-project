@@ -45,7 +45,7 @@ THEN all the saved artworks presist
 - JavaScript
 - jQuery
 - Foundation CSS
-- ARTSY and Wiki APIs
+- ARTIC and Wiki APIs
 
 ## Usage 
 

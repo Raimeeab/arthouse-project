@@ -1,0 +1,71 @@
+.background-image {
+    background-image: url(../assets/homepage.jpg);
+}
+
+.element-center {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+}
+.title {
+    text-align:center;
+    font-size: 8rem;
+    margin-bottom: 0.5vh;
+    margin-top: 0.6vh;
+    
+}
+
+.search-field {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 30vw;
+    height: 3vh;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.search-button {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 31vw;
+    height: 5vh;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+}
+
+.search-field-narrow {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 14vw;
+    height: 1.5vh;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.search-button-narrow {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 15.5vw;
+    height: 3.3vh;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.hidden-div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32.5vh;
+}
