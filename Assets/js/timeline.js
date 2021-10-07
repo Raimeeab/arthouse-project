@@ -318,27 +318,11 @@ var arrayOfTimelineItems = [
 ];
 
 
-{/*
-                    <li data-horizontal-timeline='{"date": "01/01/1527", "customDisplay": "Mannerism"}'>
-                        <h4>Mannerism</h4>
-                        <p class= "date">1527 - 1580</p>
-                        <div class="content">
-                            <p>
-Mannerism, also known as Late Renaissance, is a style in European art that emerged in the later years of the Italian High Renaissance around 1520, spreading by about 1530 and lasting until about the end of the 16th century in Italy, when the Baroque style largely replaced it. Northern Mannerism continued into the early 17th century.
-
-Stylistically, Mannerism encompasses a variety of approaches influenced by, and reacting to, the harmonious ideals associated with artists such as Leonardo da Vinci, Raphael, and early Michelangelo. Where High Renaissance art emphasizes proportion, balance, and ideal beauty, Mannerism exaggerates such qualities, often resulting in compositions that are asymmetrical or unnaturally elegant. Notable for its artificial (as opposed to naturalistic) qualities, this artistic style privileges compositional tension and instability rather than the balance and clarity of earlier Renaissance painting. Mannerism in literature and music is notable for its highly florid style and intellectual sophistication.
-
-The definition of Mannerism and the phases within it continues to be a subject of debate among art historians. For example, some scholars have applied the label to certain early modern forms of literature (especially poetry) and music of the 16th and 17th centuries. The term is also used to refer to some late Gothic painters working in northern Europe from about 1500 to 1530, especially the Antwerp Mannerists—a group unrelated to the Italian movement. Mannerism has also been applied by analogy to the Silver Age of Latin literature. <a href="https://en.wikipedia.org/wiki/Mannerism" target="_blank">Read more.</a>
-                            </p>
-                            <img src="./Assets/images/Eras/Mannerism.jpeg" alt="Jacopo Pontormo, Entombment, 1528; Santa Felicità, Florence" width="300">
-                        </div>
-                    </li>  */}
-
 function timedRenderer() {
     var idx = 0;
     var afterDate = "01/01/0300";
   
-    return function render2() {
+    return function renderTimeline() {
       if (idx >= arrayOfTimelineItems.length) {
           return;
         };
@@ -356,7 +340,7 @@ function timedRenderer() {
       afterDate = timeline.date;
       idx++;
   
-      setTimeout(render2, 350);
+      setTimeout(renderTimeline, 350);
     };
 };
   
