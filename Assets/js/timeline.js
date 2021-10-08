@@ -328,7 +328,8 @@ function timedRenderer() {
         };
   
       const { timeline, title, date, content, img, link, alt, width } = arrayOfTimelineItems[idx];
-  
+      
+        // Dynamically create html elements, whilst changing all the information for each era event using array
       var html = `<li data-horizontal-timeline='${JSON.stringify(timeline)}'>
                 <h4>${title}</h4>
                 <p class="date">${date}</p>
@@ -339,7 +340,8 @@ function timedRenderer() {
       $("#era-timeline-container").horizontalTimeline("addEvent", html, "after", afterDate);
       afterDate = timeline.date;
       idx++;
-  
+        
+      // Timeout added to create enough of time to hit the DOM and refresh before the next era event
       setTimeout(renderTimeline, 350);
     };
 };

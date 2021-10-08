@@ -1,3 +1,4 @@
+
 var searchFormEl = document.getElementById("search-form");
 var clearHistoryEl = document.getElementById("clear-history")
 var searchDivEl = document.getElementById("search-div");
