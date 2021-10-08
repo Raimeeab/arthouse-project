@@ -1,16 +1,19 @@
-
+// ------------------------------ Global Variables ------------------------------
 var searchFormEl = document.getElementById("search-form");
 var clearHistoryEl = document.getElementById("clear-history")
 var searchDivEl = document.getElementById("search-div");
 var hiddenDivEl = document.getElementById("hidden-div");
-var enterArtistNameEL = document.getElementById("artist-name")
-
+var artistBioSection = document.getElementById("artist-bio");
+var enterArtistNameEL = document.getElementById("artist-name");
+var artistNameEl  = document.getElementById("result-artist-title");
+var artistBioEl = document.getElementById("result-artist-bio");
 var artistName = "";
 var artistBio = "";
 var displayResult = document.querySelector("#display-result");
 var resultDisplayEl = document.querySelector('#result-artwork-list');
 var displayNumber = 9;
 
+// ------------------------------ Artic API ------------------------------
 function searchArtist(input) {
     var searchQueryURL = "https://api.artic.edu/api/v1/artworks/search?q=";
     var searchResultIDsArray = [];
@@ -131,14 +134,15 @@ function getEra(year) {
 
 }
 
-// API: Wiki API
+
+
+// ------------------------------ Wiki API ------------------------------
 function getArtistWikiBio(artistName) {
     //tutorial: https://stackoverflow.com/questions/4452102/how-to-get-plain-text-out-of-wikipedia
     var artistNameWUnderscore = artistName.replace(/\s+/g, '_'); //replace space with _
     var searchQueryURL = "https://neon-cors-proxy.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles="
         + artistNameWUnderscore +
-        "&prop=extracts&exintro&explaintext&exchars=300&formatversion=2&format=json";
-
+        "&prop=extracts&exintro&explaintext=0&formatversion=2&format=json";
     //async
     //await
     fetch(searchQueryURL)
@@ -150,9 +154,36 @@ function getArtistWikiBio(artistName) {
             return response.json();
         })
         .then(function (response) {
+            document.getElementById("read-more-button")?.remove();
+            // ? -if it doesn't exist, don't throw an error
             console.log("Wiki API:");
             console.log(response);
             console.log("Artist Name: " + artistName);
+            artistNameEl.textContent = artistName;
+            console.log(response.query.pages[0].extract);
+            var fullBio = response.query.pages[0].extract;
+            var shortBio = fullBio.substring(0, 500) + "...";
+            console.log(shortBio);
+            var readMoreEl = document.createElement("button");
+            readMoreEl.id = "read-more-button";
+            readMoreEl.textContent = "Show more";
+            artistBioSection.appendChild(readMoreEl);
+            var showLess = true;
+            readMoreEl.onclick = function (){
+                console.log("click");
+                if (showLess) {
+                    artistBioEl.textContent = fullBio;
+                    readMoreEl.textContent = "Show less";
+                    showLess = false;
+                } else {
+                    artistBioEl.textContent = shortBio;
+                    readMoreEl.textContent = "Show more";
+                    showLess = true;
+                }
+            };
+
+            artistBioEl.textContent = shortBio;
+            
             return response.query.pages[0].extract; //bio
         })
         .catch(function (error) {
@@ -161,6 +192,8 @@ function getArtistWikiBio(artistName) {
         });
 
 }
+
+
 
 // function renderResult() {
 //     displayResult.style.display = "block";
