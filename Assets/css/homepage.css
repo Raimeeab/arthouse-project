@@ -59,9 +59,8 @@ h6 {
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     white-space:pre-wrap;
-    padding-right: 20px;
 }
 
 
@@ -151,4 +150,9 @@ a:hover {
 
 .p-3 {
     padding:15px;
+}
+
+#result-artist-bio {
+    padding: 10px;
+    align-items: center;
 }
