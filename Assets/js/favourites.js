@@ -1,8 +1,6 @@
-
 var noArtworkYetEl = document.querySelector(".no-fav-yet");
 var favList = [];
 var favArtworkDisplayEl = document.querySelector('#fav-artwork-list');
-
 
 function renderFavArtwork() {
 
@@ -14,7 +12,7 @@ function renderFavArtwork() {
         var imgDesc = favList[i].imgDesc;
 
         var displayResultItem = document.createElement('div');
-        displayResultItem.setAttribute("class", "result-item columns small-4 p-3");
+        displayResultItem.setAttribute("class", "result-item cell");
 
         var displayImgItem = document.createElement('img');
         displayImgItem.setAttribute("src", imgURL);
@@ -83,7 +81,7 @@ function favBtnHandler(event) {
         noArtworkYetEl.textContent = "No favourites added yet 😔";
     }
 
-    console.log(favList);
+    // console.log(favList);
 }
 
 function init() {

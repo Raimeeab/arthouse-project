@@ -102,8 +102,8 @@ a:hover {
 
 .fav-btn{
     position: absolute;
-    top:15px;
-    right:15px;
+    top:0px;
+    right:0px;
 }
 
 .p-3 {

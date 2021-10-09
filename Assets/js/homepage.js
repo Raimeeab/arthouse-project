@@ -76,7 +76,7 @@ function displaySearchResult(searchResultArray) {
                 //var imgEra = getEra(imgYear);
 
                 var displayResultItem = document.createElement('div');
-                displayResultItem.setAttribute("class", "result-item columns small-4 p-3");
+                displayResultItem.setAttribute("class", "result-item cell");
 
                 var displayImgItem = document.createElement('img');
                 displayImgItem.setAttribute("src", imgURL);
