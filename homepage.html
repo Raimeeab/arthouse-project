@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtHouse</title>
+
+    <!-- Compressed JavaScript -->
+    <!-- Foundation CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
+
+    <!-- Reset Stylesheet -->
+    <link rel="reset stylesheet" href="./Assets/css/reset.css" />
+    <link rel="stylesheet" href="Assets/css/homepage.css">
+</head>
+
+<body class="background-image">
+
+    <header>
+        <div class="top-bar">
+          <div class="top-bar-left">
+            <ul class="dropdown menu">
+              <li class="menu-text nav-title"><a href="#" style="color:black; font-weight:700; cursor: default;">Arthouse</a></li>
+              <li class="menu-text">
+                <a href="#">Home</a>
+              </li>
+              <li class="menu-text">
+                <a href="eras.html">Eras</a>
+              </li>
+              <li class="menu-text">
+                <a href="favourites.html">Favourites</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    <section class="artist-section">
+        <h2 style="text-align:center;">Search an artist</h2>
+        <!-- <h3 style="text-align:center;">Search the entire Art Institute of Chicago<br> collection by an artist’s name
+            below.
+        </h3> -->
+        <form class="element-center" id="search-form">
+          <label>  
+              <input class="search-field" type="text" placeholder="Search Artist" id="artist-name">
+              <button class="search-button button large medium-expanded" id="search-button">Search</button>
+          </label>
+        </form>
+    </section>
+    <!-- <div class="element-center" id="search-div">
+            <input class="search-field" type="text" placeholder="Artist Name" id="artist-name">
+            <button id="search-button" class="search-button">Search</button> 
+        </div> -->
+
+    <!-- search result display here -->
+    <section id="display-result">
+        <h1 id="result-artist-title"></h1>
+        <h2 id="result-artist-bio"></h2>
+
+        <!-- search result display here -->
+        <div id="result-artwork-list" class="grid-x">
+
+        </div>
+    </section>
+
+    <script src="Assets/js/homepage.js"></script>
+    
+
+</body>
+
+</html>
