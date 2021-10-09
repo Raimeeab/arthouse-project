@@ -157,6 +157,8 @@ a:hover {
     margin: .5em;
 }
 
+
+
 @media (max-width:480px) {
     .artist-section h2 {
         font-size: 1.2em;
