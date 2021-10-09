@@ -3,7 +3,12 @@
 
 # ArtHouse Project
 ---
-![arthouse-project-demo](INSERT GIF DEMOS HERE)
+
+### Main Feature Demo
+![main-demo]()
+
+### Era Feature Demo
+![era-demo](https://github.com/Raimeeab/arthouse-project/blob/main/Assets/images/Demos/era-demo.gif)
 
 
 ## Description
@@ -28,8 +33,8 @@ As a user, who is interested in art history,
 WHEN I press on the eras page, 
 THEN I am presented with an art history timeline. 
 GIVEN I click on a certain era, 
-THEN I am presented with a description of characteristics, 
-along with leading contributors and influential art works
+THEN I am presented with a description of the art movements characteristics, 
+along with its leading contributors
 
 ## Technologies used 
 
