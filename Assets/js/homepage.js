@@ -9,7 +9,7 @@ var artistNameEl = document.getElementById("result-artist-title");
 var artistBioEl = document.getElementById("result-artist-bio");
 var artistName = "";
 var artistBio = "";
-var displayResultEl = document.querySelector(".display-result");
+var noArtworkYetEl = document.querySelector(".display-result");
 var resultDisplayEl = document.querySelector('#result-artwork-list');
 var displayNumber = 9;
 var favList = [];
@@ -23,7 +23,7 @@ function searchArtist(input) {
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
-                console.log("Error:" + response.status);
+                renderModal("Error: " + response.status);
                 throw response.json();
             }
             return response.json();
@@ -38,8 +38,7 @@ function searchArtist(input) {
             displaySearchResult(searchResultIDsArray);
         })
         .catch(function (error) {
-
-            console.log("Error Message 1: " + error);
+            renderModal("Error: " + error);
         });
 }
 
@@ -58,7 +57,7 @@ function displaySearchResult(searchResultArray) {
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
-                console.log("Error:" + response.status);
+                renderModal("Error: " + response.status);
                 throw response.json();
             }
             return response.json();
@@ -82,8 +81,6 @@ function displaySearchResult(searchResultArray) {
                 var displayImgItem = document.createElement('img');
                 displayImgItem.setAttribute("src", imgURL);
                 displayImgItem.setAttribute("class", "img");
-
-                //displayResultItem.innerHTML = "<img src=\"" + imgURL + "\">";
 
                 var displayTitleItem = document.createElement('h2');
                 displayTitleItem.setAttribute("class", "img-title p-3 text-center");
@@ -110,7 +107,7 @@ function displaySearchResult(searchResultArray) {
                         if (favList[j].imgTitle === imgTitle) {
                             favBtn.setAttribute("class", "button secondary large fav-btn fas fa-star");
                             break;
-                        } else if ((favList[j].imgTitle !== imgTitle) && (j === favList.length-1)) {
+                        } else if ((favList[j].imgTitle !== imgTitle) && (j === favList.length - 1)) {
                             favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
                             break;
                         }
@@ -129,10 +126,10 @@ function displaySearchResult(searchResultArray) {
             }
         })
         .catch(function (error) {
+            renderModal("Error message: "+ error);
 
-            alert("Error Message 2: " + error);
         });
-    displayResultEl.style.display = "flex"; // to unhidden the div
+    noArtworkYetEl.style.display = "flex"; // to unhidden the div
 }
 
 //
@@ -171,12 +168,11 @@ function getArtistWikiBio(artistName) {
     var searchQueryURL = "https://neon-cors-proxy.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles="
         + artistNameWUnderscore +
         "&prop=extracts&exintro&explaintext=0&formatversion=2&format=json";
-    //async
-    //await
+
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
-                console.log("Error:" + response.status);
+                renderModal("Error: " + response.status);
                 throw response.json();
             }
             return response.json();
@@ -217,18 +213,9 @@ function getArtistWikiBio(artistName) {
             return response.query.pages[0].extract; //bio
         })
         .catch(function (error) {
-
-            console.log("Error Message 1: " + error);
+            renderModal("Error: " + error);
         });
 
-}
-
-function init() {
-    displayResultEl.style.display = "none";
-    var localFavList = JSON.parse(localStorage.getItem("fav-list"));
-    if (localFavList !== null) {
-        favList = localFavList;
-    }
 }
 
 function formSubmitHandler(event) {
@@ -253,7 +240,7 @@ function formSubmitHandler(event) {
         // hiddenDivEl.appendChild(buttonEl);
 
     } else {
-        alert("Enter Artist Name:");//change into modal
+        renderModal("Please Enter Artist.");
     }
 }
 
@@ -282,7 +269,11 @@ function favBtnHandler(event) {
                 favList.splice(i, 1); //remove the item from the array by index i
                 $(event.target).toggleClass("far"); //toggle between add/remove shared star
                 $(event.target).toggleClass("fas"); //toggle between add/remove solid star
-                localStorage.setItem("fav-list", JSON.stringify(favList));
+                if (favList.length !== 0) {
+                    localStorage.setItem("fav-list", JSON.stringify(favList));
+                } else {
+                    localStorage.removeItem("fav-list"); //if array is empty, remove the item in local
+                }
                 break;
             } else if ((favList[i].imgTitle !== artworkClickedObj.imgTitle) && (i == favList.length - 1)) {
                 favList.push(artworkClickedObj);
@@ -293,7 +284,15 @@ function favBtnHandler(event) {
             }
         }
     }
-    console.log(favList);
+    //console.log(favList);
+}
+
+function init() {
+    noArtworkYetEl.style.display = "none";
+    var localFavList = JSON.parse(localStorage.getItem("fav-list"));
+    if (localFavList !== null) {
+        favList = localFavList;
+    }
 }
 
 init();
