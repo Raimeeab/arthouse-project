@@ -288,3 +288,4 @@ init();
 searchFormEl.addEventListener('submit', formSubmitHandler);
 //favBtnEl.addEventListener("click", favBtnHandler);
 //displayResultEl.on('click',favBtnHandler);
+//displayResultEl.on('click',favBtnHandler);
