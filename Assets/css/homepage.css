@@ -149,6 +149,14 @@ a:hover {
     margin-top: 32.5vh;
 }
 
+.p-1 {
+    padding:5px;
+}
+
+.p-2 {
+    padding:10px;
+}
+
 .p-3 {
     padding:15px;
 }

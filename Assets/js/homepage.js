@@ -9,8 +9,10 @@ var artistNameEl  = document.getElementById("result-artist-title");
 var artistBioEl = document.getElementById("result-artist-bio");
 var artistName = "";
 var artistBio = "";
-var displayResult = document.querySelector("#display-result");
+var displayResultEl = document.querySelector(".display-result");
+//var displayResultEl = $('.display-result');
 var resultDisplayEl = document.querySelector('#result-artwork-list');
+//var favBtnEl = document.querySelector(".fav-btn");
 var displayNumber = 9;
 
 // ------------------------------ Artic API ------------------------------
@@ -78,22 +80,46 @@ function displaySearchResult(searchResultArray) {
                 var imgTitle = response.data[i].title;
                 var imgURL = "https://www.artic.edu/iiif/2/" + response.data[i].image_id + "/full/843,/0/default.jpg";
                 var imgYear = response.data[i].date_display;
-                var imgEra = response.data[i].date_display;
+                var imgArtist = response.data[i].artist_title;
+                var imgDesc = response.data[i].thumbnail.alt_text;
+                //var imgEra = getEra(imgYear);
 
-                var displayImgItem = document.createElement('div');
-                displayImgItem.setAttribute("class", "columns small-4 p-3");
-                displayImgItem.innerHTML = "<img src=\"" + imgURL + "\">"; //height=300
+                var displayResultItem = document.createElement('div');
+                displayResultItem.setAttribute("class", "result-item columns small-4 p-3");
+                
+                var displayImgItem = document.createElement('img');
+                displayImgItem.setAttribute("src",imgURL);
+                displayImgItem.setAttribute("class", "img");
 
-                var displayTitleItem = document.createElement('div');
+                //displayResultItem.innerHTML = "<img src=\"" + imgURL + "\">";
+
+                var displayTitleItem = document.createElement('h2');
+                displayTitleItem.setAttribute("class", "img-title p-3 text-center");
                 displayTitleItem.textContent = imgTitle;
-                displayTitleItem.setAttribute("class", "columns small-4");
 
-                var displayEraItem = document.createElement('div');
-                displayEraItem.innerHTML = "Year: " + imgYear;
+                var displayArtistItem = document.createElement('h5');
+                displayArtistItem.setAttribute("class", "img-artist text-center");
+                displayArtistItem.innerHTML = "Artist: " + imgArtist;
 
-                resultDisplayEl.appendChild(displayImgItem);
-                // resultDisplayEl.appendChild(displayTitleItem);
-                // resultDisplayEl.appendChild(displayEraItem);
+                var displayYearItem = document.createElement('h5');
+                displayYearItem.setAttribute("class", "img-year text-center");
+                displayYearItem.innerHTML = "Year: " + imgYear;
+
+                var displayDescItem = document.createElement('p');
+                displayDescItem.setAttribute("class", "img-desc text-center");
+                displayDescItem.innerHTML = imgDesc;
+
+                var favBtn = document.createElement('button');
+                favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+
+                displayResultItem.appendChild(displayImgItem);
+                displayResultItem.appendChild(favBtn);
+                displayResultItem.appendChild(displayTitleItem);
+                displayResultItem.appendChild(displayArtistItem);
+                displayResultItem.appendChild(displayYearItem);
+                displayResultItem.appendChild(displayDescItem);
+
+                resultDisplayEl.appendChild(displayResultItem);
 
             }
         })
@@ -101,7 +127,7 @@ function displaySearchResult(searchResultArray) {
 
             alert("Error Message 2: " + error);
         });
-    displayResult.style.display = "flex"; // to unhidden the div
+    displayResultEl.style.display = "flex"; // to unhidden the div
 }
 
 //
@@ -207,7 +233,7 @@ function getArtistWikiBio(artistName) {
 // }
 
 function init() {
-    displayResult.style.display = "none";
+    displayResultEl.style.display = "none";
 }
 
 // function formSubmitHandler(event) {
@@ -222,8 +248,7 @@ function init() {
 //     }
 // }
 
-
-var formSubmitHandler = function (event) {
+function formSubmitHandler(event){
     event.preventDefault();
     var artistName = enterArtistNameEL.value.trim();
     if (artistName) {
@@ -247,9 +272,14 @@ var formSubmitHandler = function (event) {
     } else {
         alert("Enter Artist Name:");//change into modal
     }
+}
 
-};
+function favBtnHandler(event){
+    //var imgName = $(event.target).parent().children(".img-title").val();
+}
 
 init();
 
-searchFormEl.addEventListener("submit", formSubmitHandler);
+searchFormEl.addEventListener('submit', formSubmitHandler);
+//favBtnEl.addEventListener("click", favBtnHandler);
+//displayResultEl.on('click',favBtnHandler);
