@@ -5,7 +5,7 @@ var searchDivEl = document.getElementById("search-div");
 var hiddenDivEl = document.getElementById("hidden-div");
 var artistBioSection = document.getElementById("artist-bio");
 var enterArtistNameEL = document.getElementById("artist-name");
-var artistNameEl  = document.getElementById("result-artist-title");
+var artistNameEl = document.getElementById("result-artist-title");
 var artistBioEl = document.getElementById("result-artist-bio");
 var artistName = "";
 var artistBio = "";
@@ -34,8 +34,8 @@ function searchArtist(input) {
             for (i = 0; i < response.data.length; i++) {
                 searchResultIDsArray.push(response.data[i].id);
             }
-            console.log("Search Artist Result:");
-            console.log(response);
+            // console.log("Search Artist Result:");
+            // console.log(response);
             displaySearchResult(searchResultIDsArray);
         })
         .catch(function (error) {
@@ -68,12 +68,12 @@ function displaySearchResult(searchResultArray) {
             artistName = response.data[0].artist_title;
             artistBio = getArtistWikiBio(artistName);
 
-            console.log("Artwork Result:");
-            console.log(response);
-            console.log("Artist:");
-            console.log(artistName);
-            console.log("Bio:");
-            console.log(artistBio);
+            // console.log("Artwork Result:");
+            // console.log(response);
+            // console.log("Artist:");
+            // console.log(artistName);
+            // console.log("Bio:");
+            // console.log(artistBio);
 
             //display images and result
             for (i = 0; i < displayNumber; i++) {
@@ -86,9 +86,9 @@ function displaySearchResult(searchResultArray) {
 
                 var displayResultItem = document.createElement('div');
                 displayResultItem.setAttribute("class", "result-item columns small-4 p-3");
-                
+
                 var displayImgItem = document.createElement('img');
-                displayImgItem.setAttribute("src",imgURL);
+                displayImgItem.setAttribute("src", imgURL);
                 displayImgItem.setAttribute("class", "img");
 
                 //displayResultItem.innerHTML = "<img src=\"" + imgURL + "\">";
@@ -131,36 +131,33 @@ function displaySearchResult(searchResultArray) {
 }
 
 //
-function getEra(year) {
-    if (year < 400) {
-        return "Prehistoric Art";
-    } else if (year >= 400 || year < 500) {
-        return "Ancient Art";
-    } else if (year >= 500 || year < 1400) {
-        return "Medieval";
-    } else if (year >= 1400 || year < 1600) {
-        return "Renaissance";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    }
-
-}
-
-
+// function getEra(year) {
+//     if (year < 400) {
+//         return "Prehistoric Art";
+//     } else if (year >= 400 || year < 500) {
+//         return "Ancient Art";
+//     } else if (year >= 500 || year < 1400) {
+//         return "Medieval";
+//     } else if (year >= 1400 || year < 1600) {
+//         return "Renaissance";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     }
+// }
 
 // ------------------------------ Wiki API ------------------------------
 function getArtistWikiBio(artistName) {
@@ -182,21 +179,21 @@ function getArtistWikiBio(artistName) {
         .then(function (response) {
             document.getElementById("read-more-button")?.remove();
             // ? -if it doesn't exist, don't throw an error
-            console.log("Wiki API:");
-            console.log(response);
-            console.log("Artist Name: " + artistName);
+            // console.log("Wiki API:");
+            // console.log(response);
+            // console.log("Artist Name: " + artistName);
             artistNameEl.textContent = artistName;
-            console.log(response.query.pages[0].extract);
+            // console.log(response.query.pages[0].extract);
             var fullBio = response.query.pages[0].extract;
             var shortBio = fullBio.substring(0, 500) + "...";
-            console.log(shortBio);
+            // console.log(shortBio);
             var readMoreEl = document.createElement("button");
             readMoreEl.id = "read-more-button";
             readMoreEl.textContent = "Show more";
             artistBioSection.appendChild(readMoreEl);
             var showLess = true;
-            readMoreEl.onclick = function (){
-                console.log("click");
+            readMoreEl.onclick = function () {
+                // console.log("click");
                 if (showLess) {
                     artistBioEl.textContent = fullBio;
                     readMoreEl.textContent = "Show less";
@@ -209,7 +206,7 @@ function getArtistWikiBio(artistName) {
             };
 
             artistBioEl.textContent = shortBio;
-            
+
             return response.query.pages[0].extract; //bio
         })
         .catch(function (error) {
@@ -248,7 +245,7 @@ function init() {
 //     }
 // }
 
-function formSubmitHandler(event){
+function formSubmitHandler(event) {
     event.preventDefault();
     var artistName = enterArtistNameEL.value.trim();
     if (artistName) {
@@ -274,12 +271,14 @@ function formSubmitHandler(event){
     }
 }
 
-function favBtnHandler(event){
-    //var imgName = $(event.target).parent().children(".img-title").val();
+function favBtnHandler(event) {
+    var imgName = $(event.target).parent().children(".img-title").val();
+    console.log("IMAGE NAME:"+imgName);
+    console.log("Clicked on fav btn");
 }
 
 init();
 
 searchFormEl.addEventListener('submit', formSubmitHandler);
 //favBtnEl.addEventListener("click", favBtnHandler);
-//displayResultEl.on('click',favBtnHandler);
+$('.fav-btn').on('click', '.fav-btn', favBtnHandler);
