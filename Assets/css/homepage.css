@@ -1,3 +1,4 @@
+/* ---------- Theme ---------- */
 
 :root {
     --background-colour: #F4F3EE;
@@ -6,7 +7,10 @@
     --highlight-colour2: #968D88;
 }
 
-/* need to figure out selection colours */
+::selection {
+    background-color: var(--highlight-colour);
+    color: var(--background-colour);
+}
 
 /* ----- Element Selectors, adjusting page stylings after reset.css is applied ----- */
 html {
@@ -63,7 +67,6 @@ p {
     white-space:pre-wrap;
 }
 
-
 a {
     text-decoration: none;
     border-radius: 5px;
@@ -76,8 +79,12 @@ a:hover {
 }
 
 
-.background-image {
-    /* background-image: url(../images/dreamstime_xxl_131606737_1200.jpg); */
+/* ---------- Class selectors ---------- */
+.top-bar,
+.top-bar-left,
+.dropdown,
+.menu {
+    background-color: var(--background-colour);
 }
 
 .element-center {
@@ -104,20 +111,9 @@ a:hover {
     font-size: 3em;
 }
 
-#search-button {
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    width: 31vw;
-    height: 5vh;
-    text-align: center;
-    font-size:2.5em;
-    background-color: var(--highlight-colour)   
-}
-
 .main-nav a {
     text-decoration: none;
-    color: black;
+    color: var(--text-colour);
     font-size: 1.5rem;
     padding: 0.75rem;
 }
@@ -157,8 +153,26 @@ a:hover {
     margin: .5em;
 }
 
+/* ----------  ID selectors ----------*/
+#search-button{
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 31vw;
+    height: 5vh;
+    text-align: center;
+    font-size:2.5em;
+    background-color: var(--highlight-colour);  
+}
 
+#read-more-button {
+    color: var(--highlight-colour);
+    font-weight: bolder;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 
+/* ----------  Media quieries ----------*/
 @media (max-width:480px) {
     .artist-section h2 {
         font-size: 1.2em;
