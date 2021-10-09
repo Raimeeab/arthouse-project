@@ -2,19 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtHouse</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtHouse</title>
 
-    <!-- Compressed JavaScript -->
-    <!-- Foundation CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
+  <!-- Compressed JavaScript -->
+  <!-- Foundation CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+    integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
 
-    <!-- Reset Stylesheet -->
-    <link rel="reset stylesheet" href="./Assets/css/reset.css" />
-    <link rel="stylesheet" href="Assets/css/homepage.css">
+  <!-- font awezome for fav icon -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+  <!-- Reset Stylesheet -->
+  <link rel="reset stylesheet" href="./Assets/css/reset.css" />
+  <link rel="reset stylesheet" href="Assets/css/favourites.css" />
+  <link rel="stylesheet" href="Assets/css/homepage.css">
+  
 </head>
 
 <body class="background-image">
@@ -54,19 +60,25 @@
             <button id="search-button" class="search-button">Search</button> 
         </div> -->
 
-    <!-- search result display here -->
-    <section id="display-result">
-        <h1 id="result-artist-title"></h1>
-        <h2 id="result-artist-bio"></h2>
 
-        <!-- search result display here -->
-        <div id="result-artwork-list" class="grid-x">
+  <!-- Search result display here -->
 
-        </div>
-    </section>
+  <section id="artist-bio">
+    <h1 id="result-artist-title" class="text-center"></h1>
+    <p id="result-artist-bio"></p>
+  </section>
 
-    <script src="Assets/js/homepage.js"></script>
-    
+  <section class="display-result">
+    <!-- Artwork display here -->
+    <div id="result-artwork-list" class="grid-x"></div>
+  </section>
+
+  <section id="previous-serches">
+    <!-- display previous artist searches after first search here -->
+  </section>
+
+  <script src="Assets/js/homepage.js"></script>
+
 
 </body>
 
