@@ -3,7 +3,12 @@
 
 # ArtHouse Project
 ---
-![arthouse-project-demo](INSERT GIF DEMOS HERE)
+
+### Main Feature Demo
+![main-demo]()
+
+### Era Feature Demo
+![era-demo](https://github.com/Raimeeab/arthouse-project/blob/main/Assets/images/Demos/era-demo.gif)
 
 
 ## Description
@@ -14,29 +19,22 @@ Link to the [site](INSERT LINK TO SITE HERE - need to figure out how to remove g
 
 ## User Story 
 
-#### Main Feature
+### Main Feature
 As a user, 
 WHEN I search an artists name,
-THEN I am presented with artist's work along with a small bio
-*GIVEN I have searched a specific artist, 
-THEN I am presented with an option to see similar works by other artists  (IS THIS STILL POSSIBLE?)*
+THEN I am presented with artist's work along with a small bio.
+WHEN I click on a favourites button, 
+THEN the selected artwork is saved in local storage.
+WHEN I refresh the page
+THEN all the saved artworks presist.
 
-#### Era Timeline Feature
+### Era Timeline Feature
 As a user, who is interested in art history, 
 WHEN I press on the eras page, 
 THEN I am presented with an art history timeline. 
 GIVEN I click on a certain era, 
-THEN I am presented with a description of characteristics, 
-along with leading contributors and influential art works
-
-#### Favourites Feature
-As a user, 
-GIVEN I've searched an artists name, 
-THEN I am presented with a body of work, along with a favourites button
-WHEN I click on a favourites button, 
-THEN the selected artwork is saved in local storage
-WHEN I refresh the page
-THEN all the saved artworks presist 
+THEN I am presented with a description of the art movements characteristics, 
+along with its leading contributors
 
 ## Technologies used 
 

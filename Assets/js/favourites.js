@@ -1,3 +1,4 @@
+// ------------------------------ Global Variables ------------------------------
 var noArtworkYetEl = document.querySelector(".no-fav-yet");
 var favList = [];
 var favArtworkDisplayEl = document.querySelector('#fav-artwork-list');
@@ -74,14 +75,12 @@ function favBtnHandler(event) {
             $(event.target).parent().remove("div");
             localStorage.setItem("fav-list", JSON.stringify(favList));
             break;
-        }
-    }
+        };
+    };
     if(favList.length === 0){
         localStorage.removeItem("fav-list");
         noArtworkYetEl.textContent = "No favourites added yet 😔";
-    }
-
-    // console.log(favList);
+    };
 }
 
 function init() {
@@ -91,9 +90,10 @@ function init() {
         renderFavArtwork();
     } else {
         noArtworkYetEl.textContent = "No favourites added yet 😔";
-    }
+    };
+};
 
-}
 init();
 
+// -------------------- Event Listeners -----------------------------------------
 $('#fav-artwork-list').on('click', '.fav-btn', favBtnHandler);
