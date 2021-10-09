@@ -25,24 +25,23 @@
 
 <body class="background-image">
 
-    <header>
-        <div class="top-bar">
-          <div class="top-bar-left">
-            <ul class="dropdown menu">
-              <li class="menu-text nav-title"><a href="#" style="color:black; font-weight:700; cursor: default;">Arthouse</a></li>
-              <li class="menu-text">
-                <a href="#">Home</a>
-              </li>
-              <li class="menu-text">
-                <a href="eras.html">Eras</a>
-              </li>
-              <li class="menu-text">
-                <a href="favourites.html">Favourites</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
+  <header>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu">
+          <li class="menu-text nav-title">ArtHouse</li>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="eras.html">Eras</a>
+          </li>
+          <li>
+            <a href="favourites.html">Favourites</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <section class="artist-section">
         <h2 style="text-align:center;">Search an artist</h2>
         <!-- <h3 style="text-align:center;">Search the entire Art Institute of Chicago<br> collection by an artist’s name
@@ -73,10 +72,14 @@
     <div id="result-artwork-list" class="grid-x"></div>
   </section>
 
-  <section id="previous-serches">
+  <section id="previous-searches">
     <!-- display previous artist searches after first search here -->
   </section>
 
+ <!-- jQuery CDN-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+  <!-- Internal JS -->
   <script src="Assets/js/homepage.js"></script>
 
 

@@ -15,6 +15,7 @@ var resultDisplayEl = document.querySelector('#result-artwork-list');
 //var favBtnEl = document.querySelector(".fav-btn");
 var displayNumber = 9;
 
+
 // ------------------------------ Artic API ------------------------------
 function searchArtist(input) {
     var searchQueryURL = "https://api.artic.edu/api/v1/artworks/search?q=";
@@ -258,8 +259,8 @@ function formSubmitHandler(event){
     var artistName = enterArtistNameEL.value.trim();
     if (artistName) {
         searchArtist(artistName);
+        // getArtistWikiBio(artistName)
         // searchDivEl.textContent = "";
-
         // var inputEl = document.createElement("input");
         // inputEl.classList = "search-field-narrow";
         // inputEl.setAttribute("type", "text");
@@ -276,7 +277,8 @@ function formSubmitHandler(event){
 
     } else {
         alert("Enter Artist Name:");//change into modal
-    }
+    };
+   
 }
 
 function favBtnHandler(event){
@@ -285,7 +287,9 @@ function favBtnHandler(event){
 
 init();
 
+
 searchFormEl.addEventListener('submit', formSubmitHandler);
 //favBtnEl.addEventListener("click", favBtnHandler);
 //displayResultEl.on('click',favBtnHandler);
 //displayResultEl.on('click',favBtnHandler);
+
