@@ -19,8 +19,9 @@
   <!-- Reset Stylesheet -->
   <link rel="reset stylesheet" href="./Assets/css/reset.css" />
   <link rel="reset stylesheet" href="Assets/css/favourites.css" />
+  <link rel="reset stylesheet" href="Assets/css/modal.css" />
   <link rel="stylesheet" href="Assets/css/homepage.css">
-  
+
 </head>
 
 <body class="background-image">
@@ -29,32 +30,34 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu">
-          <li class="menu-text nav-title">ArtHouse</li>
-          <li>
+          <li class="menu-text nav-title"><a href="#"
+              style="color:black; font-weight:700; cursor: default;">Arthouse</a></li>
+          <li class="menu-text">
             <a href="#">Home</a>
           </li>
-          <li>
+          <li class="menu-text">
             <a href="eras.html">Eras</a>
           </li>
-          <li>
+          <li class="menu-text">
             <a href="favourites.html">Favourites</a>
           </li>
         </ul>
       </div>
     </div>
-    <section class="artist-section">
-        <h2 style="text-align:center;">Search an artist</h2>
-        <!-- <h3 style="text-align:center;">Search the entire Art Institute of Chicago<br> collection by an artist’s name
+  </header>
+  <section class="artist-section">
+    <h2 style="text-align:center;">Search an artist</h2>
+    <!-- <h3 style="text-align:center;">Search the entire Art Institute of Chicago<br> collection by an artist’s name
             below.
         </h3> -->
-        <form class="element-center" id="search-form">
-          <label>  
-              <input class="search-field" type="text" placeholder="Search Artist" id="artist-name">
-              <button class="search-button button large medium-expanded" id="search-button">Search</button>
-          </label>
-        </form>
-    </section>
-    <!-- <div class="element-center" id="search-div">
+    <form class="element-center" id="search-form">
+      <label>
+        <input class="search-field" type="text" placeholder="Search Artist" id="artist-name">
+        <button class="search-button button large medium-expanded" id="search-button">Search</button>
+      </label>
+    </form>
+  </section>
+  <!-- <div class="element-center" id="search-div">
             <input class="search-field" type="text" placeholder="Artist Name" id="artist-name">
             <button id="search-button" class="search-button">Search</button> 
         </div> -->
@@ -62,26 +65,30 @@
 
   <!-- Search result display here -->
 
-  <section id="artist-bio">
+  <section id="artist-bio" class="grid-container">
     <h1 id="result-artist-title" class="text-center"></h1>
     <p id="result-artist-bio"></p>
   </section>
 
-  <section class="display-result">
+  <section class="display-result grid-container">
     <!-- Artwork display here -->
-    <div id="result-artwork-list" class="grid-x"></div>
+    <div id="result-artwork-list" class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3"></div>
   </section>
 
   <section id="previous-searches">
     <!-- display previous artist searches after first search here -->
   </section>
 
- <!-- jQuery CDN-->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
-  <!-- Internal JS -->
-  <script src="Assets/js/homepage.js"></script>
+  <!-- The Modal -->
+  <div id="message-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+    </div>
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="Assets/js/modal.js"></script>
+  <script src="Assets/js/homepage.js"></script>
 
 </body>
 

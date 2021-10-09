@@ -5,16 +5,14 @@ var searchDivEl = document.getElementById("search-div");
 var hiddenDivEl = document.getElementById("hidden-div");
 var artistBioSection = document.getElementById("artist-bio");
 var enterArtistNameEL = document.getElementById("artist-name");
-var artistNameEl  = document.getElementById("result-artist-title");
+var artistNameEl = document.getElementById("result-artist-title");
 var artistBioEl = document.getElementById("result-artist-bio");
 var artistName = "";
 var artistBio = "";
-var displayResultEl = document.querySelector(".display-result");
-//var displayResultEl = $('.display-result');
+var noArtworkYetEl = document.querySelector(".display-result");
 var resultDisplayEl = document.querySelector('#result-artwork-list');
-//var favBtnEl = document.querySelector(".fav-btn");
 var displayNumber = 9;
-
+var favList = [];
 
 // ------------------------------ Artic API ------------------------------
 function searchArtist(input) {
@@ -25,7 +23,7 @@ function searchArtist(input) {
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
-                console.log("Error:" + response.status);
+                renderModal("Error: " + response.status);
                 throw response.json();
             }
             return response.json();
@@ -35,13 +33,12 @@ function searchArtist(input) {
             for (i = 0; i < response.data.length; i++) {
                 searchResultIDsArray.push(response.data[i].id);
             }
-            console.log("Search Artist Result:");
-            console.log(response);
+            // console.log("Search Artist Result:");
+            // console.log(response);
             displaySearchResult(searchResultIDsArray);
         })
         .catch(function (error) {
-
-            console.log("Error Message 1: " + error);
+            renderModal("Error: " + error);
         });
 }
 
@@ -60,7 +57,7 @@ function displaySearchResult(searchResultArray) {
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
-                console.log("Error:" + response.status);
+                renderModal("Error: " + response.status);
                 throw response.json();
             }
             return response.json();
@@ -68,13 +65,6 @@ function displaySearchResult(searchResultArray) {
         .then(function (response) {
             artistName = response.data[0].artist_title;
             artistBio = getArtistWikiBio(artistName);
-
-            console.log("Artwork Result:");
-            console.log(response);
-            console.log("Artist:");
-            console.log(artistName);
-            console.log("Bio:");
-            console.log(artistBio);
 
             //display images and result
             for (i = 0; i < displayNumber; i++) {
@@ -86,13 +76,11 @@ function displaySearchResult(searchResultArray) {
                 //var imgEra = getEra(imgYear);
 
                 var displayResultItem = document.createElement('div');
-                displayResultItem.setAttribute("class", "result-item columns small-4 p-3");
-                
-                var displayImgItem = document.createElement('img');
-                displayImgItem.setAttribute("src",imgURL);
-                displayImgItem.setAttribute("class", "img");
+                displayResultItem.setAttribute("class", "result-item cell");
 
-                //displayResultItem.innerHTML = "<img src=\"" + imgURL + "\">";
+                var displayImgItem = document.createElement('img');
+                displayImgItem.setAttribute("src", imgURL);
+                displayImgItem.setAttribute("class", "img");
 
                 var displayTitleItem = document.createElement('h2');
                 displayTitleItem.setAttribute("class", "img-title p-3 text-center");
@@ -111,7 +99,20 @@ function displaySearchResult(searchResultArray) {
                 displayDescItem.innerHTML = imgDesc;
 
                 var favBtn = document.createElement('button');
-                favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+                //check if the artwork is already stored in fav list. If yes, add a solid star icon, if not, add a shaped star icon
+                if (favList.length == 0) {
+                    favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+                } else {
+                    for (j = 0; j < favList.length; j++) {
+                        if (favList[j].imgTitle === imgTitle) {
+                            favBtn.setAttribute("class", "button secondary large fav-btn fas fa-star");
+                            break;
+                        } else if ((favList[j].imgTitle !== imgTitle) && (j === favList.length - 1)) {
+                            favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+                            break;
+                        }
+                    }
+                }
 
                 displayResultItem.appendChild(displayImgItem);
                 displayResultItem.appendChild(favBtn);
@@ -125,43 +126,40 @@ function displaySearchResult(searchResultArray) {
             }
         })
         .catch(function (error) {
+            renderModal("Error message: "+ error);
 
-            alert("Error Message 2: " + error);
         });
-    displayResultEl.style.display = "flex"; // to unhidden the div
+    noArtworkYetEl.style.display = "flex"; // to unhidden the div
 }
 
 //
-function getEra(year) {
-    if (year < 400) {
-        return "Prehistoric Art";
-    } else if (year >= 400 || year < 500) {
-        return "Ancient Art";
-    } else if (year >= 500 || year < 1400) {
-        return "Medieval";
-    } else if (year >= 1400 || year < 1600) {
-        return "Renaissance";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    } else if (year >= 400 || year < 499) {
-        return "Ancient Art";
-    }
-
-}
-
-
+// function getEra(year) {
+//     if (year < 400) {
+//         return "Prehistoric Art";
+//     } else if (year >= 400 || year < 500) {
+//         return "Ancient Art";
+//     } else if (year >= 500 || year < 1400) {
+//         return "Medieval";
+//     } else if (year >= 1400 || year < 1600) {
+//         return "Renaissance";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     } else if (year >= 400 || year < 499) {
+//         return "Ancient Art";
+//     }
+// }
 
 // ------------------------------ Wiki API ------------------------------
 function getArtistWikiBio(artistName) {
@@ -170,38 +168,34 @@ function getArtistWikiBio(artistName) {
     var searchQueryURL = "https://neon-cors-proxy.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles="
         + artistNameWUnderscore +
         "&prop=extracts&exintro&explaintext=0&formatversion=2&format=json";
-    //async
-    //await
+
     fetch(searchQueryURL)
         .then(function (response) {
             if (!response.ok) {
-                console.log("Error:" + response.status);
+                renderModal("Error: " + response.status);
                 throw response.json();
             }
             return response.json();
         })
         .then(function (response) {
             document.getElementById("read-more-button")?.remove();
-            // ? - if it doesn't exist, don't throw an error
-            console.log("Wiki API:");
-            console.log(response);
-            console.log("Artist Name: " + artistName);
+            // ? -if it doesn't exist, don't throw an error
+            // console.log("Wiki API:");
+            // console.log(response);
+            // console.log("Artist Name: " + artistName);
             artistNameEl.textContent = artistName;
-            console.log(response.query.pages[0].extract);
-            // Artists full biography
+            // console.log(response.query.pages[0].extract);
             var fullBio = response.query.pages[0].extract;
             // Cut biography to 500 characters 
             var shortBio = fullBio.substring(0, 500) + "...";
-            console.log(shortBio);
-            // Create a span element 
-            var readMoreEl = document.createElement("span");
-            // Delete the double up 
+            // console.log(shortBio);
+            var readMoreEl = document.createElement("button");
             readMoreEl.id = "read-more-button";
             readMoreEl.textContent = "Show more";
             // readMoreEl.innerHTML += readMoreEl;
             artistBioSection.appendChild(readMoreEl);
             var showLess = true;
-            readMoreEl.onclick = function (){
+            readMoreEl.onclick = function () {
                 // Allows user to toggle between showing the long and short bio
                 if (showLess) {
                     artistBioEl.textContent = fullBio;
@@ -215,52 +209,22 @@ function getArtistWikiBio(artistName) {
             };
 
             artistBioEl.textContent = shortBio;
-            
+
             return response.query.pages[0].extract; //bio
         })
         .catch(function (error) {
-
-            console.log("Error Message 1: " + error);
+            renderModal("Error: " + error);
         });
 
 }
 
-
-
-// function renderResult() {
-//     displayResult.style.display = "block";
-
-//     var titleHTML = '<h1 id="result-artist-title">' + artistName + '</h1>';
-//     var bioHTML = '<h2 id="result-artist-bio">' + artistBio + '</h2>';
-
-//     displayResult.appendChild(titleHTML);
-//     displayResult.appendChild(bioHTML);
-
-// }
-
-function init() {
-    displayResultEl.style.display = "none";
-}
-
-// function formSubmitHandler(event) {
-//     event.preventDefault();
-
-//     var input = userInputEl.value.trim();
-//     if (input) {
-//         console.log(input);
-//         searchArtist(input);
-//     } else {
-//         alert("Please type something.");
-//     }
-// }
-
-function formSubmitHandler(event){
+function formSubmitHandler(event) {
     event.preventDefault();
     var artistName = enterArtistNameEL.value.trim();
     if (artistName) {
         searchArtist(artistName);
-        // getArtistWikiBio(artistName)
         // searchDivEl.textContent = "";
+
         // var inputEl = document.createElement("input");
         // inputEl.classList = "search-field-narrow";
         // inputEl.setAttribute("type", "text");
@@ -276,20 +240,62 @@ function formSubmitHandler(event){
         // hiddenDivEl.appendChild(buttonEl);
 
     } else {
-        alert("Enter Artist Name:");//change into modal
-    };
-   
+        renderModal("Please Enter Artist.");
+    }
 }
 
-function favBtnHandler(event){
-    //var imgName = $(event.target).parent().children(".img-title").val();
+function favBtnHandler(event) {
+
+    var artworkClickedObj = {
+        imgURL: $(event.target).parent().children(".img").attr('src'),
+        imgTitle: $(event.target).parent().children(".img-title").text(),
+        imgArtist: $(event.target).parent().children(".img-artist").text(),
+        imgYear: $(event.target).parent().children(".img-year").text(),
+        imgDesc: $(event.target).parent().children(".img-desc").text()
+    }
+
+    //check if image is saved in local
+    //if local is empty, save it
+    if (favList.length === 0) {
+        favList.push(artworkClickedObj);
+        $(event.target).toggleClass("far"); //toggle between add/remove
+        $(event.target).toggleClass("fas"); //toggle between add/remove
+        localStorage.setItem("fav-list", JSON.stringify(favList));
+    } else {
+        //if not empty, then check if title matches a title in fav list array
+        //if yes, remove it from the array, if not, add it to the array
+        for (i = 0; i < favList.length; i++) {
+            if (favList[i].imgTitle === artworkClickedObj.imgTitle) {
+                favList.splice(i, 1); //remove the item from the array by index i
+                $(event.target).toggleClass("far"); //toggle between add/remove shared star
+                $(event.target).toggleClass("fas"); //toggle between add/remove solid star
+                if (favList.length !== 0) {
+                    localStorage.setItem("fav-list", JSON.stringify(favList));
+                } else {
+                    localStorage.removeItem("fav-list"); //if array is empty, remove the item in local
+                }
+                break;
+            } else if ((favList[i].imgTitle !== artworkClickedObj.imgTitle) && (i == favList.length - 1)) {
+                favList.push(artworkClickedObj);
+                $(event.target).toggleClass("far"); //toggle between add/remove
+                $(event.target).toggleClass("fas"); //toggle between add/remove
+                localStorage.setItem("fav-list", JSON.stringify(favList));
+                break;
+            }
+        }
+    }
+    //console.log(favList);
+}
+
+function init() {
+    noArtworkYetEl.style.display = "none";
+    var localFavList = JSON.parse(localStorage.getItem("fav-list"));
+    if (localFavList !== null) {
+        favList = localFavList;
+    }
 }
 
 init();
 
-
 searchFormEl.addEventListener('submit', formSubmitHandler);
-//favBtnEl.addEventListener("click", favBtnHandler);
-//displayResultEl.on('click',favBtnHandler);
-//displayResultEl.on('click',favBtnHandler);
-
+$('#result-artwork-list').on('click', '.fav-btn', favBtnHandler);
