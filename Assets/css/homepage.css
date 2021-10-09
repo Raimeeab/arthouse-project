@@ -59,9 +59,8 @@ h6 {
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     white-space:pre-wrap;
-    padding-right: 20px;
 }
 
 
@@ -99,20 +98,21 @@ a:hover {
     margin: 1rem;
     padding: 0.5rem;
     border-radius: 5px;
-    width: 30vw;
-    height: 3vh;
+    width: 31vw;
+    height: 5vh;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 3em;
 }
 
-.search-button {
+#search-button {
     margin: 1rem;
     padding: 0.5rem;
     border-radius: 5px;
     width: 31vw;
     height: 5vh;
     text-align: center;
-    font-size: 1.5em;
+    font-size:2.5em;
+    background-color: var(--highlight-colour)   
 }
 
 .main-nav a {
@@ -149,14 +149,60 @@ a:hover {
     margin-top: 32.5vh;
 }
 
-.p-1 {
-    padding:5px;
-}
-
-.p-2 {
-    padding:10px;
-}
-
 .p-3 {
     padding:15px;
+}
+
+.artist-section h2 {
+    margin: .5em;
+}
+
+@media (max-width:480px) {
+    .artist-section h2 {
+        font-size: 1.2em;
+        margin: .5em;
+    }
+
+    .search-field, #search-button {
+        font-size: 1.5rem;
+    }
+
+    body {
+        padding:0;
+    }
+
+    .menu-text {
+        font-size: 1.5rem;
+        padding:0.7rem 0.9rem !important;
+    }
+
+    .menu-text a {
+        padding:0 !important;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) {
+    .artist-section h2 {
+        font-size: 1.2em;
+        margin: .5em;
+    }
+
+    .search-field, #search-button {
+        font-size: 1.5rem;
+    }
+
+    body {
+        padding:0;
+    }
+
+    .menu-text {
+        font-size: 1.5rem;
+        padding:0.7rem 0.9rem !important;
+    }
+
+    .menu-text a {
+        padding:0 !important;
+    }
 }

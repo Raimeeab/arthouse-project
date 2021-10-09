@@ -185,15 +185,17 @@ function getArtistWikiBio(artistName) {
             artistNameEl.textContent = artistName;
             // console.log(response.query.pages[0].extract);
             var fullBio = response.query.pages[0].extract;
+            // Cut biography to 500 characters 
             var shortBio = fullBio.substring(0, 500) + "...";
             // console.log(shortBio);
             var readMoreEl = document.createElement("button");
             readMoreEl.id = "read-more-button";
             readMoreEl.textContent = "Show more";
+            // readMoreEl.innerHTML += readMoreEl;
             artistBioSection.appendChild(readMoreEl);
             var showLess = true;
-            readMoreEl.onclick = function () {
-                // console.log("click");
+            readMoreEl.onclick = function (){
+                // Allows user to toggle between showing the long and short bio
                 if (showLess) {
                     artistBioEl.textContent = fullBio;
                     readMoreEl.textContent = "Show less";
