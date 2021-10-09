@@ -10,10 +10,9 @@ var artistBioEl = document.getElementById("result-artist-bio");
 var artistName = "";
 var artistBio = "";
 var displayResultEl = document.querySelector(".display-result");
-//var displayResultEl = $('.display-result');
 var resultDisplayEl = document.querySelector('#result-artwork-list');
-//var favBtnEl = document.querySelector(".fav-btn");
 var displayNumber = 9;
+var favList = [];
 
 // ------------------------------ Artic API ------------------------------
 function searchArtist(input) {
@@ -68,13 +67,6 @@ function displaySearchResult(searchResultArray) {
             artistName = response.data[0].artist_title;
             artistBio = getArtistWikiBio(artistName);
 
-            // console.log("Artwork Result:");
-            // console.log(response);
-            // console.log("Artist:");
-            // console.log(artistName);
-            // console.log("Bio:");
-            // console.log(artistBio);
-
             //display images and result
             for (i = 0; i < displayNumber; i++) {
                 var imgTitle = response.data[i].title;
@@ -110,7 +102,20 @@ function displaySearchResult(searchResultArray) {
                 displayDescItem.innerHTML = imgDesc;
 
                 var favBtn = document.createElement('button');
-                favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+                //check if the artwork is already stored in fav list. If yes, add a solid star icon, if not, add a shaped star icon
+                if (favList.length == 0) {
+                    favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+                } else {
+                    for (j = 0; j < favList.length; j++) {
+                        if (favList[j].imgTitle === imgTitle) {
+                            favBtn.setAttribute("class", "button secondary large fav-btn fas fa-star");
+                            break;
+                        } else if ((favList[j].imgTitle !== imgTitle) && (j === favList.length-1)) {
+                            favBtn.setAttribute("class", "button secondary large fav-btn far fa-star");
+                            break;
+                        }
+                    }
+                }
 
                 displayResultItem.appendChild(displayImgItem);
                 displayResultItem.appendChild(favBtn);
@@ -194,7 +199,7 @@ function getArtistWikiBio(artistName) {
             // readMoreEl.innerHTML += readMoreEl;
             artistBioSection.appendChild(readMoreEl);
             var showLess = true;
-            readMoreEl.onclick = function (){
+            readMoreEl.onclick = function () {
                 // Allows user to toggle between showing the long and short bio
                 if (showLess) {
                     artistBioEl.textContent = fullBio;
@@ -218,34 +223,13 @@ function getArtistWikiBio(artistName) {
 
 }
 
-
-
-// function renderResult() {
-//     displayResult.style.display = "block";
-
-//     var titleHTML = '<h1 id="result-artist-title">' + artistName + '</h1>';
-//     var bioHTML = '<h2 id="result-artist-bio">' + artistBio + '</h2>';
-
-//     displayResult.appendChild(titleHTML);
-//     displayResult.appendChild(bioHTML);
-
-// }
-
 function init() {
     displayResultEl.style.display = "none";
+    var localFavList = JSON.parse(localStorage.getItem("fav-list"));
+    if (localFavList !== null) {
+        favList = localFavList;
+    }
 }
-
-// function formSubmitHandler(event) {
-//     event.preventDefault();
-
-//     var input = userInputEl.value.trim();
-//     if (input) {
-//         console.log(input);
-//         searchArtist(input);
-//     } else {
-//         alert("Please type something.");
-//     }
-// }
 
 function formSubmitHandler(event) {
     event.preventDefault();
@@ -274,13 +258,45 @@ function formSubmitHandler(event) {
 }
 
 function favBtnHandler(event) {
-    var imgName = $(event.target).parent().children(".img-title").val();
-    console.log("IMAGE NAME:"+imgName);
-    console.log("Clicked on fav btn");
+
+    var artworkClickedObj = {
+        imgURL: $(event.target).parent().children(".img").attr('src'),
+        imgTitle: $(event.target).parent().children(".img-title").text(),
+        imgArtist: $(event.target).parent().children(".img-artist").text(),
+        imgYear: $(event.target).parent().children(".img-year").text(),
+        imgDesc: $(event.target).parent().children(".img-desc").text()
+    }
+
+    //check if image is saved in local
+    //if local is empty, save it
+    if (favList.length === 0) {
+        favList.push(artworkClickedObj);
+        $(event.target).toggleClass("far"); //toggle between add/remove
+        $(event.target).toggleClass("fas"); //toggle between add/remove
+        localStorage.setItem("fav-list", JSON.stringify(favList));
+    } else {
+        //if not empty, then check if title matches a title in fav list array
+        //if yes, remove it from the array, if not, add it to the array
+        for (i = 0; i < favList.length; i++) {
+            if (favList[i].imgTitle === artworkClickedObj.imgTitle) {
+                favList.splice(i, 1); //remove the item from the array by index i
+                $(event.target).toggleClass("far"); //toggle between add/remove shared star
+                $(event.target).toggleClass("fas"); //toggle between add/remove solid star
+                localStorage.setItem("fav-list", JSON.stringify(favList));
+                break;
+            } else if ((favList[i].imgTitle !== artworkClickedObj.imgTitle) && (i == favList.length - 1)) {
+                favList.push(artworkClickedObj);
+                $(event.target).toggleClass("far"); //toggle between add/remove
+                $(event.target).toggleClass("fas"); //toggle between add/remove
+                localStorage.setItem("fav-list", JSON.stringify(favList));
+                break;
+            }
+        }
+    }
+    console.log(favList);
 }
 
 init();
 
 searchFormEl.addEventListener('submit', formSubmitHandler);
-//favBtnEl.addEventListener("click", favBtnHandler);
-$('.fav-btn').on('click', '.fav-btn', favBtnHandler);
+$('#result-artwork-list').on('click', '.fav-btn', favBtnHandler);
