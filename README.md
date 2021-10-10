@@ -54,10 +54,10 @@ User can search any artist in history and will be presented with their body of w
 
 ## Contributors
 
-*The Univserity of Sydney | Trilogy Education Services* <br>
 *Raimee Abbassi* <br>
 *Kaushik Patel* <br>
 *Shaotang Yen* <br>
+*The Univserity of Sydney | Trilogy Education Services* <br>
 
 ## License 
 
