@@ -77,7 +77,7 @@ function favBtnHandler(event) {
             break;
         };
     };
-    if(favList.length === 0){
+    if(favList.length === 0){ //if there's nothing in the array, remove the item from localstorage
         localStorage.removeItem("fav-list");
         noArtworkYetEl.textContent = "No favourites added yet 😔";
     };

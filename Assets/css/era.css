@@ -140,7 +140,6 @@ and (max-device-width: 1024px) {
 
 @media (max-width:768px) {
     .content {
-        /* display:block; */
         flex-direction: column-reverse;
     }
 }
