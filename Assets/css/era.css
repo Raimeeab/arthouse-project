@@ -76,6 +76,10 @@ a:hover {
     color: var(--highlight-colour2);
 }
 
+img {
+    height: max-content !important;
+}
+
 /* ---------- Class selectors ---------- */
 .top-bar,
 .top-bar-left,
@@ -133,3 +137,16 @@ a:hover {
     text-align: start;
 }
 
+@@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) {
+  .content {
+      display:block;
+  }
+}
+
+@media (max-width:480px) {
+    .content {
+        display:block;
+    }
+}

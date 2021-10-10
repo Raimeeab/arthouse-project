@@ -94,14 +94,17 @@ function displaySearchResult(searchResultArray) {
                 //displayResultItem.innerHTML = "<img src=\"" + imgURL + "\">";
 
                 var displayTitleItem = document.createElement('h2');
+                displayTitleItem.style.color = "#DCA493";
                 displayTitleItem.setAttribute("class", "img-title p-3 text-center");
                 displayTitleItem.textContent = imgTitle;
 
                 var displayArtistItem = document.createElement('h5');
+                displayArtistItem.style.color = "#433C38";
                 displayArtistItem.setAttribute("class", "img-artist text-center");
                 displayArtistItem.innerHTML = "Artist: " + imgArtist;
 
                 var displayYearItem = document.createElement('h5');
+                displayYearItem.style.color = "#433C38";
                 displayYearItem.setAttribute("class", "img-year text-center");
                 displayYearItem.innerHTML = "Year: " + imgYear;
 
@@ -289,3 +292,10 @@ searchFormEl.addEventListener('submit', formSubmitHandler);
 //favBtnEl.addEventListener("click", favBtnHandler);
 //displayResultEl.on('click',favBtnHandler);
 //displayResultEl.on('click',favBtnHandler);
+
+var homeBtn = document.querySelector("#home-btn");
+homeBtn.addEventListener('click', function(){
+    artistBioSection.innerHTML = "";
+    displayResultEl.innerHTML = "";
+
+});
