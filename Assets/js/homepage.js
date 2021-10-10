@@ -139,6 +139,7 @@ function displaySearchResult(searchResultArray) {
 function getArtistWikiBio(artistName) {
     //tutorial: https://stackoverflow.com/questions/4452102/how-to-get-plain-text-out-of-wikipedia
     var artistNameWUnderscore = artistName.replace(/\s+/g, '_'); //replace space with _
+    console.log(artistNameWUnderscore);
     var searchQueryURL = "https://neon-cors-proxy.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles="
         + artistNameWUnderscore +
         "&prop=extracts&exintro&explaintext=0&formatversion=2&format=json";
