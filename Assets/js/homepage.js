@@ -3,7 +3,7 @@ var searchFormEl = document.getElementById("search-form");
 var clearHistoryEl = document.getElementById("clear-history")
 var searchDivEl = document.getElementById("search-div");
 var hiddenDivEl = document.getElementById("hidden-div");
-var artistBioSection = document.getElementById("artist-bio");
+var readMoreSection = document.getElementById("read-more");
 var enterArtistNameEL = document.getElementById("artist-name");
 var artistNameEl = document.getElementById("result-artist-title");
 var artistBioEl = document.getElementById("result-artist-bio");
@@ -11,6 +11,8 @@ var artistName = "";
 var artistBio = "";
 var noArtworkYetEl = document.querySelector(".display-result");
 var resultDisplayEl = document.querySelector('#result-artwork-list');
+var artistSearchSectionEl = document.querySelector(".artist-section");
+var artistSearchSectionTitleEl = document.querySelector(".artist-section-title");
 var displayNumber = 9;
 var favList = [];
 
@@ -82,7 +84,7 @@ function displaySearchResult(searchResultArray) {
                 displayImgItem.setAttribute("src", imgURL);
                 displayImgItem.setAttribute("class", "img");
 
-                var displayTitleItem = document.createElement('h2');
+                var displayTitleItem = document.createElement('h4');
                 displayTitleItem.setAttribute("class", "img-title p-3 text-center");
                 displayTitleItem.textContent = imgTitle;
 
@@ -95,7 +97,7 @@ function displaySearchResult(searchResultArray) {
                 displayYearItem.innerHTML = "Year: " + imgYear;
 
                 var displayDescItem = document.createElement('p');
-                displayDescItem.setAttribute("class", "img-desc text-center");
+                displayDescItem.setAttribute("class", "img-desc text-center desc");
                 displayDescItem.innerHTML = imgDesc;
 
                 var favBtn = document.createElement('button');
@@ -126,7 +128,7 @@ function displaySearchResult(searchResultArray) {
             }
         })
         .catch(function (error) {
-            renderModal("Error message: "+ error);
+            renderModal("Error message: " + error);
 
         });
     noArtworkYetEl.style.display = "flex"; // to unhide the div
@@ -156,20 +158,22 @@ function getArtistWikiBio(artistName) {
             // Cut biography to 500 characters 
             var shortBio = fullBio.substring(0, 500) + "...";
             // Create a read more button
-            var readMoreEl = document.createElement("button");
+            var readMoreEl = document.createElement("p");
             readMoreEl.id = "read-more-button";
-            readMoreEl.textContent = "Show more";
-            artistBioSection.appendChild(readMoreEl);
+            readMoreEl.textContent = "▼ Show more ▼";
+            //readMoreEl.style.textAlign = "text-align:center";
+            //shortBio.innerHTML += readMoreEl;
+            readMoreSection.appendChild(readMoreEl);
             var showLess = true;
             readMoreEl.onclick = function () {
                 // Allows user to toggle between showing the long and short bio
                 if (showLess) {
                     artistBioEl.textContent = fullBio;
-                    readMoreEl.textContent = "Show less";
+                    readMoreEl.textContent = "▲ Show less ▲";
                     showLess = false;
                 } else {
                     artistBioEl.textContent = shortBio;
-                    readMoreEl.textContent = "Show more";
+                    readMoreEl.textContent = "▼ Show more ▼";
                     showLess = true;
                 }
             };
@@ -187,7 +191,10 @@ function formSubmitHandler(event) {
     event.preventDefault();
     var artistName = enterArtistNameEL.value.trim();
     if (artistName) {
+        artistSearchSectionEl.classList.remove("vh-70");
+        artistSearchSectionTitleEl.classList.remove("font-size-80");
         searchArtist(artistName);
+        
         // searchDivEl.textContent = "";
 
         // var inputEl = document.createElement("input");
