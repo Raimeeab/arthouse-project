@@ -26,36 +26,44 @@
   
 </head>
 
-<body>
-  <header>
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu">
-          <li class="menu-text nav-title">ArtHouse</li>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="eras.html">Eras</a>
-          </li>
-          <li>
-            <a href="favourites.html">Favourites</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <section class="artist-section">
-    <h1 class="text-center">ArtHouse</h1>
-   <h4 class="text-center"> Search an artist</h4>
-    <form class="element-center" id="search-form">
-      <label>
-        <input class="search-field" type="text" placeholder="Artist name.." id="artist-name">
-        <button class="search-button button large medium-expanded" id="search-button">Search</button>
-      </label>
-    </form>
-  </section>
- 
+<body class="background-image">
+
+    <header>
+        <div class="top-bar">
+          <div class="top-bar-left">
+            <ul class="dropdown menu">
+              <li class="menu-text nav-title"><a href="#" style="color:black; font-weight:700; cursor: default;">Arthouse</a></li>
+              <li class="menu-text" id="home-btn">
+                <a href="#">Home</a>
+              </li>
+              <li class="menu-text">
+                <a href="eras.html">Eras</a>
+              </li>
+              <li class="menu-text">
+                <a href="favourites.html">Favourites</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    <section class="artist-section">
+        <h2 style="text-align:center;">Search an artist</h2>
+        <!-- <h3 style="text-align:center;">Search the entire Art Institute of Chicago<br> collection by an artist’s name
+            below.
+        </h3> -->
+        <form class="element-center" id="search-form">
+          <label>  
+              <input class="search-field" type="text" placeholder="Search Artist" id="artist-name">
+              <button class="search-button button large medium-expanded" id="search-button">Search</button>
+          </label>
+        </form>
+    </section>
+    <!-- <div class="element-center" id="search-div">
+            <input class="search-field" type="text" placeholder="Artist Name" id="artist-name">
+            <button id="search-button" class="search-button">Search</button> 
+        </div> -->
+
+
   <!-- Search result display here -->
   <section id="artist-bio" class="grid-container">
      <!-- Bio display here -->
