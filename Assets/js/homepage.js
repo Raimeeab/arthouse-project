@@ -75,7 +75,6 @@ function displaySearchResult(searchResultArray) {
                 var imgYear = response.data[i].date_display;
                 var imgArtist = response.data[i].artist_title;
                 var imgDesc = response.data[i].thumbnail.alt_text;
-                //var imgEra = getEra(imgYear);
 
                 var displayResultItem = document.createElement('div');
                 displayResultItem.setAttribute("class", "result-item cell");
@@ -85,8 +84,6 @@ function displaySearchResult(searchResultArray) {
                 displayImgItem.setAttribute("class", "img");
 
                 var displayTitleItem = document.createElement('h4');
-                // var displayTitleItem = document.createElement('h2');
-                // displayTitleItem.style.color = "#DCA493";
                 displayTitleItem.setAttribute("class", "img-title p-3 text-center");
                 displayTitleItem.textContent = imgTitle;
 
@@ -165,8 +162,6 @@ function getArtistWikiBio(artistName) {
             var readMoreEl = document.createElement("p");
             readMoreEl.id = "read-more-button";
             readMoreEl.textContent = "▼ Show more ▼";
-            //readMoreEl.style.textAlign = "text-align:center";
-            //shortBio.innerHTML += readMoreEl;
             readMoreSection.appendChild(readMoreEl);
             var showLess = true;
             readMoreEl.onclick = function () {
@@ -245,7 +240,6 @@ function favBtnHandler(event) {
             }
         }
     }
-    //console.log(favList);
 }
 
 function init() {
@@ -260,14 +254,4 @@ init();
 
 // -------------------- Event Listeners -----------------------------------------
 searchFormEl.addEventListener('submit', formSubmitHandler);
-//favBtnEl.addEventListener("click", favBtnHandler);
-//displayResultEl.on('click',favBtnHandler);
-//displayResultEl.on('click',favBtnHandler);
-
-// var homeBtn = document.querySelector("#home-btn");
-// homeBtn.addEventListener('click', function(){
-//     artistBioEl.innerHTML = "";
-//     noArtworkYetEl.innerHTML = "";
-
-// });
 $('#result-artwork-list').on('click', '.fav-btn', favBtnHandler);
