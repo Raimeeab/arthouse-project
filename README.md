@@ -54,9 +54,9 @@ User can search any artist in history and will be presented with their body of w
 
 ## Contributors
 
-*Raimee Abbassi* <br>
-*Kaushik Patel* <br>
-*Shaotang Yen* <br>
+*[Raimee Abbassi](https://github.com/Raimeeab)* <br>
+*[Kaushik Patel](https://github.com/kashpateltech)* <br>
+*[Shaotang Yen](https://github.com/shaotangyen)* <br>
 *The Univserity of Sydney | Trilogy Education Services* <br>
 
 ## License 
