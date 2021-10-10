@@ -1,4 +1,4 @@
-
+/* ----------  Theme ----------  */
 :root {
     --background-colour: #F4F3EE;
     --text-colour: #433C38;
@@ -6,7 +6,10 @@
     --highlight-colour2: #968D88;
 }
 
-/* need to figure out selection colours */
+::selection {
+    background-color: var(--highlight-colour);
+    color: var(--background-colour);
+}
 
 /* ----- Element Selectors, adjusting page stylings after reset.css is applied ----- */
 html {
@@ -76,69 +79,10 @@ a:hover {
     color: var(--highlight-colour2);
 }
 
-img {
-    height: max-content !important;
-}
-
 /* ---------- Class selectors ---------- */
-.date {
-    text-align: center;
-    color: var(--highlight-colour);
-    padding: 0%;
-}
-
-.content {
-    display: flex;
-    text-align: start;
-    justify-content: space-between;
-}
-
-/* ---------- Overriding jsdilvr CSS for timeline ---------- */
-.timeline-navigation a {
-	display: inline;
-    	text-decoration: none;
-    	color: var(--highlight-colour2);
-}
-
-.timeline-navigation a:hover {
-	color: var(--highlight-colour);
-	border-color: var(--highlight-colour);
-}
-
-.horizontal-timeline .events-content .progressBar, 
-.horizontal-timeline .filling-line,
-.horizontal-timeline .events a.selected::after, 
-.horizontal-timeline .events a.older-event::after {
-	background-color: var(--highlight-colour);
-}
-
-
-.horizontal-timeline .events a {
-    color: var(--text-colour);
-    width: 100px;
-    
-}
-
-.horizontal-timeline .events,
-.horizontal-timeline .events a::after {
-    background: var(--highlight-colour2);
-}
-
-.horizontal-timeline .events-content li[data-horizontal-timeline] {
-    background: rgba(150, 141, 136, 10%);
-    text-align: start;
-}
-
-@@media only screen 
-and (min-device-width: 768px) 
-and (max-device-width: 1024px) {
-  .content {
-      display:block;
-  }
-}
-
-@media (max-width:480px) {
-    .content {
-        display:block;
-    }
+.top-bar,
+.top-bar-left,
+.dropdown,
+.menu {
+    background-color: var(--background-colour);
 }

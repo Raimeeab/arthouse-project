@@ -1,85 +1,10 @@
-
-:root {
-    --background-colour: #F4F3EE;
-    --text-colour: #433C38;
-    --highlight-colour: #DCA493;
-    --highlight-colour2: #968D88;
+/* ----------  Element Selectors ---------- */
+input {
+    outline-color: var(--highlight-colour);
+    border-color: var(--highlight-colour2);
 }
 
-/* need to figure out selection colours */
-
-/* ----- Element Selectors, adjusting page stylings after reset.css is applied ----- */
-html {
-    font-size: 63%;
-}
-
-body {
-    font-family: 'Lato','SF Pro Text','SF Pro Icons','Helvetica Neue','Helvetica','Arial', sans-serif;
-    font-size: 1.75rem;
-    line-height: 1.5;
-    color: var(--text-colour);
-    background-color: var(--background-colour);
-    padding: 0 15px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0.65rem;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-h1 {
-    font-size: 3.5rem;
-    font-family: 'Bebas Neue','SF Pro Text','SF Pro Icons','Helvetica Neue','Helvetica','Arial', sans-serif;
-    margin-top: 10px;
-    color:  var(--highlight-colour)
-}
-
-h2 {
-    font-size: 3rem;
-}
-
-h3 {
-    font-size: 2rem;
-    font-style: italic;
-}
-
-h4 {
-    font-size: 2.5rem;
-    text-align: center;
-    font-family: 'Bebas Neue','SF Pro Text','SF Pro Icons','Helvetica Neue','Helvetica','Arial', sans-serif;
-}
-
-h5 {
-    font-size: 1.5rem;
-}
-
-h6 {
-    font-size: 1rem;
-}
-
-p {
-    font-size: 1.4rem;
-    white-space:pre-wrap;
-}
-
-
-a {
-    text-decoration: none;
-    border-radius: 5px;
-    color: var(--highlight-colour);
-    font-weight: bolder;
-}
-
-a:hover {
-    color: var(--highlight-colour2);
-}
-
-
-.background-image {
-    /* background-image: url(../images/dreamstime_xxl_131606737_1200.jpg); */
-}
-
+/* ----------  Class Selectors ----------  */
 .element-center {
     display: flex;
     align-items: center; 
@@ -102,17 +27,6 @@ a:hover {
     height: 5vh;
     text-align: center;
     font-size: 3em;
-}
-
-#search-button {
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    width: 31vw;
-    height: 5vh;
-    text-align: center;
-    font-size:2.5em;
-    background-color: var(--highlight-colour)   
 }
 
 .main-nav a {
@@ -157,8 +71,19 @@ a:hover {
     margin: .5em;
 }
 
+/* ----------  ID Selectors ----------  */
+#search-button {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 31vw;
+    height: 5vh;
+    text-align: center;
+    font-size:2.5em;
+    background-color: var(--highlight-colour)   
+}
 
-
+/* ----------  Media Queiries ----------  */
 @media (max-width:480px) {
     .artist-section h2 {
         font-size: 1.2em;
