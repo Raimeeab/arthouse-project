@@ -19,7 +19,7 @@ function renderFavArtwork() {
         displayImgItem.setAttribute("src", imgURL);
         displayImgItem.setAttribute("class", "img");
 
-        var displayTitleItem = document.createElement('h2');
+        var displayTitleItem = document.createElement('h4');
         displayTitleItem.setAttribute("class", "img-title p-3 text-center");
         displayTitleItem.textContent = imgTitle;
 
@@ -32,7 +32,7 @@ function renderFavArtwork() {
         displayYearItem.innerHTML = imgYear;
 
         var displayDescItem = document.createElement('p');
-        displayDescItem.setAttribute("class", "img-desc text-center");
+        displayDescItem.setAttribute("class", "img-desc text-center desc");
         displayDescItem.innerHTML = imgDesc;
 
         var favBtn = document.createElement('button');
