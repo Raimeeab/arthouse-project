@@ -5,60 +5,59 @@
 ---
 
 ### Main Feature Demo
-![main-demo]()
+![main-demo](./Assets/images/Demos/arthouse-demo.gif)
 
 ### Era Feature Demo
-![era-demo](https://github.com/Raimeeab/arthouse-project/blob/main/Assets/images/Demos/era-demo.gif)
+![era-demo](./Assets/images/Demos/era-demo.gif)
 
 
 ## Description
 
-ArtHouse is an app for the artist lovers. The aim of this project is to create a one-stop space to find an artist's body of work, biography, historical era as well as have the ability to save their favourite artworks, which will presist after every visit to the website. Moreover, the era-feature allows the user to search the entire History of Western Art using the timeline carousel at the top of the page. Each section will provide the user a brief information of that specific era and its major contributors, along with an image and a wiki link. 
+ArtHouse is an app for the artist lovers. The aim of this project is to create a one-stop space to find an artist's body of work and biography, as well as have the ability to save their favourite artworks, which will presist after every visit to the website. Moreover, the era-feature allows the user to search the entire History of Western Art using the timeline carousel at the top of the page. Each section will provide the user a brief information of that specific era and its major contributors, along with an image and a wiki link. 
 
-Link to the [site](INSERT LINK TO SITE HERE - need to figure out how to remove github-raimee from URL )
+Link to the [site](https://raimeeab.github.io/arthouse-project)
 
 ## User Story 
 
 ### Main Feature
-As a user, 
-WHEN I search an artists name,
-THEN I am presented with artist's work along with a small bio.
-WHEN I click on a favourites button, 
-THEN the selected artwork is saved in local storage.
-WHEN I refresh the page
-THEN all the saved artworks presist.
+As a user, <br>
+WHEN I search an artist’s name, <br>
+THEN I am presented with the artists body of work and a  biography. <br>
+GIVEN I press on the favourite button,<br>
+THEN the artwork is saved in the favourites tab. <br>
+
 
 ### Era Timeline Feature
-As a user, who is interested in art history, 
-WHEN I press on the eras page, 
-THEN I am presented with an art history timeline. 
-GIVEN I click on a certain era, 
-THEN I am presented with a description of the art movements characteristics, 
-along with its leading contributors
+As a user, <br>
+WHEN I press on the eras tab on the nav bar, <br>
+THEN I am presented with a timeline of the entire history of Western Arts.<br>
+Given I press on the “read more” link,<br>
+THEN I am taken to the related wiki page.<br>
 
 ## Technologies used 
 
-- HTML
-- CSS
 - JavaScript
-- jQuery
+- jQuery 
+- Jsdilvr library
+- CSS
 - Foundation CSS
-- ARTIC and Wiki APIs
+- Artic API
+- Wiki  API
+- HTML 5
+
 
 ## Usage 
 
-User can search any artist in history and will be presented with their body of work, a brief biography and what era they belong to. They are given the ability to favourite specifc pieces which will be saved and displayed in the favourites page. The era feature always users to find information about every major movement in Western Art History, as well as leading contributors and influenctial artworks. 
+User can search any artist in history and will be presented with their body of work and a brief biography. They are given the ability to favourite specifc pieces which will be saved and displayed in the favourites page. The era feature always users to find information about every major movement in Western Art History, as well as leading contributors and influenctial artworks. 
 
 - The user is also able to remove any of the artworks from their local storage by clicking the star button again 
-- When the user clicks on an artist's era, they are taken to that era in the eras feature 
-
 
 ## Contributors
 
-*The Univserity of Sydney | Trilogy Education Services*
-*Raimee Abbassi*
-*Kaushik Patel*
-*Shaotang Yen*
+*The Univserity of Sydney | Trilogy Education Services* <br>
+*Raimee Abbassi* <br>
+*Kaushik Patel* <br>
+*Shaotang Yen* <br>
 
 ## License 
 
