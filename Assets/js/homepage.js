@@ -198,22 +198,6 @@ function formSubmitHandler(event) {
         artistSearchSectionEl.classList.remove("vh-70");
         artistSearchSectionTitleEl.classList.remove("font-size-80");
         searchArtist(artistName);
-        
-        // searchDivEl.textContent = "";
-
-        // var inputEl = document.createElement("input");
-        // inputEl.classList = "search-field-narrow";
-        // inputEl.setAttribute("type", "text");
-        // inputEl.setAttribute("placeholder", "Artist Name");
-        // inputEl.setAttribute("id", "artist-name");
-
-        // var buttonEl = document.createElement("button");
-        // buttonEl.classList = "search-button-narrow";
-        // buttonEl.setAttribute("id", "search-button");
-        // buttonEl.textContent = "Search";
-
-        // hiddenDivEl.appendChild(inputEl);
-        // hiddenDivEl.appendChild(buttonEl);
 
     } else {
         renderModal("Please Enter Artist.");
@@ -280,10 +264,10 @@ searchFormEl.addEventListener('submit', formSubmitHandler);
 //displayResultEl.on('click',favBtnHandler);
 //displayResultEl.on('click',favBtnHandler);
 
-var homeBtn = document.querySelector("#home-btn");
-homeBtn.addEventListener('click', function(){
-    artistBioSection.innerHTML = "";
-    displayResultEl.innerHTML = "";
+// var homeBtn = document.querySelector("#home-btn");
+// homeBtn.addEventListener('click', function(){
+//     artistBioEl.innerHTML = "";
+//     noArtworkYetEl.innerHTML = "";
 
-});
+// });
 $('#result-artwork-list').on('click', '.fav-btn', favBtnHandler);
